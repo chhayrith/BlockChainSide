@@ -12,9 +12,9 @@ struct InfoData: Content {
 
 func routes(_ app: Application) throws {
     
-//    app.get { req async in
-//        "It works!"
-//    }
+    app.get { req async in
+        "Wellcome to chhayrith's blockchain research api!!"
+    }
 //    
 //    app.post("info") { req -> String in
 //        let data = try req.content.decode(InfoData.self)
