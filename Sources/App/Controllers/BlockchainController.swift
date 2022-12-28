@@ -23,4 +23,8 @@ class BlockchainController{
         return self.blockChainService.getBlockchain()
     }
     
+    func mine(req: Request, transaction: Transaction) -> Block{
+        return self.blockChainService.getNextBlock(transactions: [transaction])
+    }
+    
 }

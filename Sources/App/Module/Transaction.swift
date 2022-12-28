@@ -22,7 +22,7 @@ final class TransactionTypeSmartContract: SmartContract {
             fees = 0.05
         }
         transaction.fees = transaction.amount * fees
-        transaction.amount -= transaction.fees
+        transaction.amount -= transaction.fees ?? 0.0
         print("TransactionTypeSmartContract:", transaction.fees)
     }
 }
@@ -36,7 +36,7 @@ final class Transaction: Content{
     var from: String
     var to: String
     var amount: Double
-    var fees: Double = 0.0
+    var fees: Double? = 0.0
     var transactionType: TrasactionType
     
     init(from: String, to: String, amount: Double, transactaionType: TrasactionType) {

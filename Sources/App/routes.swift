@@ -28,7 +28,13 @@ func routes(_ app: Application) throws {
 
     
     
-//    let blockChainController = BlockchainController()
-//    app.get("api","greet", use: blockChainController.greet(req:))
-//    app.get("blockchain", use: blockChainController.getBlockchain(req:))
+    let blockChainController = BlockchainController()
+    app.get("api", use: blockChainController.greet(req:))
+    app.get("blockchain", use: blockChainController.getBlockchain(req:))
+    app.post("mine") { req -> Block in
+        let transaction = try req.content.decode(Transaction.self)
+        let block = blockChainController.mine(req: req, transaction: transaction)
+        return block
+    }
+    
 }
