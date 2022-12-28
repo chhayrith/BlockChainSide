@@ -28,7 +28,7 @@ func routes(_ app: Application) throws {
 
     
     
-    let blockChainController = BlockchainController()
-    app.get("api","greet", use: blockChainController.greet(req:))
-    app.get("blockchain", use: blockChainController.getBlockchain(req:))
+//    let blockChainController = BlockchainController()
+//    app.get("api","greet", use: blockChainController.greet(req:))
+//    app.get("blockchain", use: blockChainController.getBlockchain(req:))
 }
