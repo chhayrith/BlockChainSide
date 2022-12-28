@@ -1,11 +1,34 @@
 import Vapor
 
-func routes(_ app: Application) throws {
-    app.get { req async in
-        "It works!"
-    }
+struct InfoResponse: Content {
+    let request: InfoData?
+}
 
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
+struct InfoData: Content {
+    let name: String
+    let age: Int?
+    let file: Data?
+}
+
+func routes(_ app: Application) throws {
+    
+//    app.get { req async in
+//        "It works!"
+//    }
+//    
+//    app.post("info") { req -> String in
+//        let data = try req.content.decode(InfoData.self)
+//        return "Hello \(data.name)!"
+//    }
+//    
+//    app.post("user", "info") { req -> InfoResponse in
+//        let data = try req.content.decode(InfoData.self)
+//        return InfoResponse(request: data)
+//    }
+
+    
+    
+    let blockChainController = BlockchainController()
+    app.get("api","greet", use: blockChainController.greet(req:))
+    app.get("blockchain", use: blockChainController.getBlockchain(req:))
 }
