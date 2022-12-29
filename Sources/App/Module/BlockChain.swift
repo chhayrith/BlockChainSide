@@ -12,6 +12,7 @@ import Vapor
 final class BlockChain: Content{
     private(set) var blocks = [Block]()
     private(set) var smartContract: [SmartContract] = [TransactionTypeSmartContract()]
+    private(set) var nodes = [BlockchainNode]()
     
     init(genesisBlock: Block) {
         addBlock(genesisBlock)
@@ -19,6 +20,12 @@ final class BlockChain: Content{
     
     private enum CodingKeys: CodingKey{
         case blocks
+        case nodes
+    }
+    
+    func registerNodes(nodes: [BlockchainNode]) -> [BlockchainNode] {
+        self.nodes.append(contentsOf: nodes)
+        return self.nodes
     }
     
     func addBlock(_ block: Block){
